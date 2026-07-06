@@ -1,0 +1,86 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Ambientes virtuais
+.venv/
+venv/
+ENV/
+env/
+
+# IDEs
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Jupyter
+.ipynb_checkpoints/
+*.ipynb_checkpoints
+
+# Dados brutos e processados
+data/raw/*
+!data/raw/.gitkeep
+!data/raw/sinisa/
+data/raw/sinisa/*
+!data/raw/sinisa/README.txt
+!data/raw/sinisa/.gitkeep
+
+data/bronze/*
+!data/bronze/.gitkeep
+!data/bronze/sinisa/
+data/bronze/sinisa/*
+!data/bronze/sinisa/.gitkeep
+
+data/silver/*
+!data/silver/.gitkeep
+!data/silver/sinisa/
+data/silver/sinisa/*
+!data/silver/sinisa/.gitkeep
+
+data/gold/*
+!data/gold/.gitkeep
+
+# Logs e temporários
+*.log
+logs/
+tmp/
+temp/
+.cache/
+
+# Variáveis de ambiente e segredos
+.env
+.env.*
+!.env.example
+secrets/
+*.pem
+*.key
+
+# Testes e cobertura
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+
+# Sistema operacional
+.DS_Store
+Thumbs.db
+desktop.ini

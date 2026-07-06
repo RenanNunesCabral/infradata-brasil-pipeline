@@ -1,0 +1,16 @@
+# Core
+pandas>=2.2.0
+pyarrow>=15.0.0
+python-dotenv>=1.0.0
+
+# Ingestão e APIs
+requests>=2.31.0
+openpyxl>=3.1.0
+
+# Qualidade e testes
+pytest>=8.0.0
+pytest-cov>=4.1.0
+
+# Dashboard (opcional — descomente conforme necessário)
+streamlit>=1.32.0
+plotly>=5.20.0
