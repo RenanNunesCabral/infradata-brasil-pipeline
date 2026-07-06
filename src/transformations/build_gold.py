@@ -30,17 +30,27 @@ def find_column(df: pd.DataFrame, candidates: list[str]) -> str:
 
 def to_numeric_br(value):
     """
-    Converte números brasileiros em texto para float.
-    Exemplo: '60,35' -> 60.35
-    Valores como 'Não calculado' viram nulo.
+    Converte valores numéricos vindos das planilhas do SINISA.
+
+    Trata casos como:
+    - '60,35'  -> 60.35
+    - '60.35'  -> 60.35
+    - '1.234,56' -> 1234.56
+    - 'Não calculado' -> nulo
     """
+
     if pd.isna(value):
         return pd.NA
+
+    if isinstance(value, (int, float)):
+        return float(value)
 
     value = str(value).strip()
 
     if value == "":
         return pd.NA
+
+    value_lower = value.lower()
 
     invalid_values = [
         "nao calculado",
@@ -50,10 +60,19 @@ def to_numeric_br(value):
         "-",
     ]
 
-    if value.lower() in invalid_values or "não calculado" in value.lower() or "nao calculado" in value.lower():
+    if (
+        value_lower in invalid_values
+        or "não calculado" in value_lower
+        or "nao calculado" in value_lower
+    ):
         return pd.NA
 
-    value = value.replace(".", "").replace(",", ".")
+    # Caso brasileiro com vírgula decimal: 60,35 ou 1.234,56
+    if "," in value:
+        value = value.replace(".", "").replace(",", ".")
+
+    # Caso já esteja no padrão decimal com ponto: 60.35
+    # Não remove o ponto.
 
     try:
         return float(value)
