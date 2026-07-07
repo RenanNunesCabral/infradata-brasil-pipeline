@@ -17,7 +17,7 @@ O objetivo é transformar arquivos públicos, muitas vezes pouco padronizados, e
 Este projeto foi desenvolvido como um estudo prático de **Engenharia de Dados**, com foco em:
 
 - ingestão de dados públicos;
-- tratamento de arquivos Excel complexos;
+- tratamento de arquivos Excel;
 - padronização de colunas;
 - persistência em formato Parquet;
 - separação em camadas Raw, Bronze, Silver e Gold;
@@ -128,29 +128,31 @@ Essa tabela permite analisar:
 
 ## Dashboard
 
-O projeto possui um dashboard em Streamlit localizado em:
+O dashboard foi desenvolvido em **Streamlit** para consumir a camada Gold gerada pelo pipeline.
 
-```text
-dashboard/app.py
-```
+Ele permite filtrar UFs, selecionar indicadores do SINISA, visualizar métricas gerais, comparar médias por estado e consultar rankings de municípios.
 
-O dashboard permite:
+### Visão geral e ranking de municípios
 
-- filtrar dados por UF;
-- selecionar indicadores do SINISA;
-- visualizar métricas gerais;
-- consultar ranking de municípios;
-- comparar médias por UF;
-- analisar natureza jurídica dos prestadores;
-- baixar a base filtrada em CSV.
+Exemplo de análise filtrando algumas UFs e o indicador de atendimento total de água.
 
-### Exemplo de visualização
+![Dashboard - Visão Geral e Ranking](docs/images/dashboard_visao_geral_ranking.png)
 
-Adicione aqui um print do dashboard:
+---
 
-```markdown
-![Dashboard - Visão Geral](docs/images/dashboard_visao_geral.png)
-```
+### Média do indicador por UF
+
+Comparação da média do indicador selecionado entre diferentes estados.
+
+![Dashboard - Média por UF](docs/images/dashboard_media_uf.png)
+
+---
+
+### Execução do pipeline
+
+Exemplo da execução das transformações **Bronze → Silver** e da geração da camada **Gold**.
+
+![Pipeline - Execução no Terminal](docs/images/pipeline_execucao_terminal.png)
 
 ---
 
@@ -247,6 +249,9 @@ Antes de rodar este passo, coloque a planilha do SINISA na pasta:
 ```text
 data/raw/sinisa/
 ```
+
+> Observação: os arquivos brutos e processados não são versionados no GitHub.  
+> Para executar o pipeline, baixe a planilha do SINISA manualmente e coloque o arquivo em `data/raw/sinisa/`.
 
 Depois execute:
 
